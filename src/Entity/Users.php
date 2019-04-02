@@ -5,11 +5,18 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UsersRepository")
+ * @UniqueEntity(
+ *     fields={"email"},
+ *     message="L'email que vous avez entrer est déjà utilisé"
+ * )
  */
-class Users
+class Users implements UserInterface
 {
     /**
      * @ORM\Id()
@@ -35,6 +42,7 @@ class Users
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\Length(max="2", maxMessage="Vous ne pouvez pas mettre plus de deux chiffres")
      */
     private $age;
 
@@ -50,8 +58,14 @@ class Users
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(min="8", minMessage="Votre mot de passe doit faire minimum 8 caractères")
      */
     private $password;
+
+    /**
+     * @Assert\EqualTo(propertyPath="password", message="Vous n'avez pas tapé le même mot de passe")
+     */
+    public $confirm_password;
 
     /**
      * @ORM\Column(type="boolean")
@@ -235,5 +249,18 @@ class Users
         }
 
         return $this;
+    }
+
+    public function eraseCredentials()
+    {
+    }
+
+    public function getRoles()
+    {
+        return ['Utilisateurs'];
+    }
+
+    public function getSalt()
+    {
     }
 }

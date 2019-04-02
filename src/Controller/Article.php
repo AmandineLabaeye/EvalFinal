@@ -17,15 +17,6 @@ class Article extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/registration", name="registration")
-     */
-    public function Registration()
-    {
-        return $this->render("registration.html.twig", [
-            "title" => "Registration"
-        ]);
-    }
 
     /**
      * @Route("/login", name="login")
