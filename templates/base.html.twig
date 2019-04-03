@@ -12,16 +12,18 @@
     <nav>
         <div id="hamburger-menu">
             <span>...</span>
-            <a href="{{ path('home') }}"> Home </a>
-            <a href="{{ path('users_index') }}"> Voir tout les élèves </a>
-            <a href="{{ path('users_new') }}"> Registration </a>
-            <a href="{{ path('login') }}">Login</a>
-            <a href="{{ path('logout') }}">Logout</a>
-            <a href="{{ path('AllArticles') }}"> All the article </a>
-            <a href="{{ path('OneArticle', { "id": 1 }) }}"> One Article</a>
-            <a href="{{ path('AddArticle') }}"> Add one article</a>
-            <a href="{{ path('myArticles') }}"> My articles </a>
-            <a href="{{ path('myComments') }}"> My Comments</a>
+            {% if not app.user %}
+                <a href="{{ path('home') }}"> Home </a>
+                <a href="{{ path('users_new') }}"> Registration </a>
+                <a href="{{ path('login') }}">Login</a>
+            {% else %}
+                <a href="{{ path('home') }}"> Home </a>
+                <a href="{{ path('AddArticle') }}"> Add one article</a>
+                <a href="{{ path('myArticles') }}"> My articles </a>
+                <a href="{{ path('myComments') }}"> My Comments</a>
+                <a href="{{ path('users_index') }}"> Voir tout les élèves </a>
+                <a href="{{ path('logout') }}">Logout</a>
+            {% endif %}
         </div>
     </nav>
 </header>

@@ -2,6 +2,27 @@
 
 {% block body %}
 
-    <h1> One Article </h1>
+    <h1> L'article </h1>
+
+    <div class="Article">
+        <h1>Article n°{{ article.id }}</h1>
+        <h2 class="TitleA">{{ article.title }}</h2>
+        <img class="ImgA" src="{{ article.photo }}" alt="Photo de l'article">
+        <p class="DescritpionA">{{ article.description }}</p>
+        <span class="DateA">{{ article.date }}</span>
+    </div>
+
+    {{ form_start(form) }}
+
+    {{ form_row(form.content, {
+        'label': "Postez un commentaire!",
+        'attr': {
+            'placeholder': "Entrez le commentaire que tu souhaites"
+        }
+    }) }}
+
+    {{ form_row(form.Send) }}
+
+    {{ form_end(form) }}
 
 {% endblock %}

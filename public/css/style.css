@@ -48,16 +48,49 @@ footer {
     clear: both;
 }
 
+h1 {
+    text-align: center;
+    text-decoration: underline;
+}
+
+.LienA > a {
+    text-decoration: none;
+    color: white;
+    background-color: darkred;
+}
+
+.Article {
+    text-align: center;
+    border: dashed darkred 2px;
+    border-radius: 20px;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+.ImgA {
+    width: 300px;
+    height: 300px;
+}
+
+.TitleA {
+    color: darkred;
+    text-decoration: underline;
+}
+
+.DateA {
+    font-weight: bolder;
+}
+
 @media (max-width: 1388px) {
     #main {
-        width: 100%;
+        width: 97%;
     }
 }
 
 @media (max-width: 812px) {
-    #main {
+    /*#main {
         width: 100%;
-    }
+    }*/
 
     #hamburger-menu > a {
         display: none;
@@ -80,3 +113,4 @@ footer {
         transition-duration: 0.5s;
     }
 }
+

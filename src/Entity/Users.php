@@ -15,6 +15,10 @@ use Symfony\Component\Validator\Constraints as Assert;
  *     fields={"email"},
  *     message="L'email que vous avez entrer est déjà utilisé"
  * )
+ * @UniqueEntity(
+ *     fields={"username"},
+ *     message="Le nom d'utilisateur que vous avez entrer est déjà utilisé"
+ * )
  */
 class Users implements UserInterface
 {
@@ -68,7 +72,7 @@ class Users implements UserInterface
     public $confirm_password;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="integer")
      */
     private $active;
 
@@ -177,12 +181,12 @@ class Users implements UserInterface
         return $this;
     }
 
-    public function getActive(): ?bool
+    public function getActive(): ?int
     {
         return $this->active;
     }
 
-    public function setActive(bool $active): self
+    public function setActive(int $active): self
     {
         $this->active = $active;
 
@@ -257,7 +261,7 @@ class Users implements UserInterface
 
     public function getRoles()
     {
-        return ['Utilisateurs'];
+        return ["User"];
     }
 
     public function getSalt()

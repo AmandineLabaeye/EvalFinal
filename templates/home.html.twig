@@ -2,6 +2,18 @@
 
 {% block body %}
 
-    <h1> Home </h1>
+    <h1> Les articles </h1>
+
+    {% for article in articles %}
+
+        <div class="Article">
+            <h2 class="TitleA">Article n°{{ article.id }}: {{ article.title }}</h2>
+            <img class="ImgA" src="{{ article.photo }}" alt="Photo de l'article">
+            <p class="DescritpionA">{{ article.description }}</p>
+            <span class="DateA">{{ article.date }}</span>
+            <p class="LienA"><a href="{{ path('OneArticle', { "id": article.id }) }}">Voir l'article et ses commentaire</a></p>
+        </div>
+
+    {% endfor %}
 
 {% endblock %}

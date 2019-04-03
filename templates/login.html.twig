@@ -4,4 +4,18 @@
 
     <h1> Login </h1>
 
+    <form action="{{ path('login') }}" method="post">
+        <div>
+            <input placeholder="Adresse email" required name="_username" type="text">
+        </div>
+
+        <div>
+            <input placeholder="Mot de passe" required name="_password" type="password">
+        </div>
+
+        <div>
+            <button type="submit"> Connexion </button>
+        </div>
+    </form>
+
 {% endblock %}

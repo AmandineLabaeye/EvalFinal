@@ -40,12 +40,12 @@ class Articles
     private $users_id;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="string", length=255)
      */
     private $date;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="integer")
      */
     private $active;
 
@@ -112,24 +112,24 @@ class Articles
         return $this;
     }
 
-    public function getDate(): ?\DateTimeInterface
+    public function getDate(): ?string
     {
         return $this->date;
     }
 
-    public function setDate(\DateTimeInterface $date): self
+    public function setDate(string $date): self
     {
         $this->date = $date;
 
         return $this;
     }
 
-    public function getActive(): ?bool
+    public function getActive(): ?int
     {
         return $this->active;
     }
 
-    public function setActive(bool $active): self
+    public function setActive(int $active): self
     {
         $this->active = $active;
 
