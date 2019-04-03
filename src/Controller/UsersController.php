@@ -41,7 +41,7 @@ class UsersController extends AbstractController
             $hash = $passwordEncoder->encodePassword($user, $user->getPassword());
             $user->setPassword($hash);
             $user->setActive(0);
-            $user->setUsersLevel("Utilisateurs");
+            $user->setUsersLevel("ROLE_USER");
             $entityManager->persist($user);
             $entityManager->flush();
 
