@@ -1,0 +1,12 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+    {% if is_granted('ROLE_ADMIN') %}
+
+        <h1>ADMIN</h1>
+
+        <a href="{{ path('users_index') }}"> Voir tout les élèves </a>
+
+    {% endif %}
+{% endblock %}

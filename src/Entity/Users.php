@@ -261,7 +261,13 @@ class Users implements UserInterface
 
     public function getRoles()
     {
-        return ["User"];
+        if ($this->users_level == "ROLE_USER") {
+            return ['ROLE_USER'];
+        } elseif ($this->users_level == "ROLE_ADMIN") {
+            return ['ROLE_ADMIN'];
+        } else {
+            return [];
+        }
     }
 
     public function getSalt()
