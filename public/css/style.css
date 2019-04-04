@@ -81,6 +81,62 @@ h1 {
     font-weight: bolder;
 }
 
+table {
+    margin: 0 auto;
+    margin-top: 1%;
+}
+
+table, th, td {
+    border: 1px solid #333;
+}
+
+th {
+    background-color: brown;
+    color: lightgray;
+    text-align: center;
+    padding: 20px;
+}
+
+td {
+    background-color: sandybrown;
+    padding: 10px;
+}
+
+a {
+    color: blue;
+    text-decoration: none;
+}
+
+input[type=text], input[type=password] {
+    width: 30%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid gray;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+button:hover {
+    background-color: darkblue;
+}
+
+button {
+    background-color: blue;
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 20px;
+    text-align: center;
+}
+
+label {
+    color: darkred;
+}
+
+
 @media (max-width: 1388px) {
     #main {
         width: 97%;

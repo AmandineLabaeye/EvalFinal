@@ -2,11 +2,11 @@
 
 {% block body %}
 
-    {% if is_granted('ROLE_ADMIN') %}
+    <h1>PANEL ADMIN</h1>
 
-        <h1>ADMIN</h1>
+    <a href="{{ path('users_all') }}"> Voir tout les utilisateurs</a>
+    <a href="{{ path('active') }}"> Voir utilisateur à activé </a>
+    {#<a href=""> Voir tout les commentaires </a>
+    <a href=""> Voir les commentaire à activé </a>#}
 
-        <a href="{{ path('users_index') }}"> Voir tout les élèves </a>
-
-    {% endif %}
 {% endblock %}
