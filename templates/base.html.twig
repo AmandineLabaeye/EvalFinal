@@ -21,6 +21,8 @@
             {% elseif is_granted('ROLE_ADMIN') %}
                 <a href="{{ path('home') }}"> Home </a>
                 <a href="{{ path('AddArticle') }}"> Add one article</a>
+                <a href="{{ path('myArticles') }}"> My articles </a>
+                <a href="{{ path('myComments') }}"> My Comments</a>
                 <a href="{{ path('admin') }}"> Panel Admin </a>
                 <a href="{{ path('logout') }}">Logout</a>
             {% else %}
@@ -28,18 +30,6 @@
                 <a href="{{ path('users_new') }}"> Registration </a>
                 <a href="{{ path('login') }}">Login</a>
             {% endif %}
-            {#{% if not app.user %}
-                <a href="{{ path('home') }}"> Home </a>
-                <a href="{{ path('users_new') }}"> Registration </a>
-                <a href="{{ path('login') }}">Login</a>
-            {% else %}
-                <a href="{{ path('home') }}"> Home </a>
-                <a href="{{ path('AddArticle') }}"> Add one article</a>
-                <a href="{{ path('myArticles') }}"> My articles </a>
-                <a href="{{ path('myComments') }}"> My Comments</a>
-                <a href="{{ path('logout') }}">Logout</a>
-            {% endif %}#}
-
         </div>
     </nav>
 </header>

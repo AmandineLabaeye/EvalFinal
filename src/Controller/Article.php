@@ -5,8 +5,8 @@ namespace App\Controller;
 use App\Entity\Articles;
 use App\Entity\Comments;
 use App\Repository\ArticlesRepository;
+use App\Repository\CommentsRepository;
 use Doctrine\Common\Persistence\ObjectManager;
-use Symfony\Component\Form\Extension\Core\Type\RadioType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -24,7 +24,7 @@ class Article extends AbstractController
     {
         return $this->render("home.html.twig", [
             "title" => "Home",
-            "articles" => $articlesRepository->findAll()
+            "articles" => $articlesRepository->findBy(["active" => 1])
         ]);
     }
 
@@ -49,9 +49,11 @@ class Article extends AbstractController
     /**
      * @Route("OneArticle/{id}", name="OneArticle", methods={"GET", "POST"})
      */
-    public function OneArticle(Articles $articles, Request $request, ObjectManager $manager)
+    public function OneArticle(Articles $articles, Request $request, ObjectManager $manager, ArticlesRepository $articlesRepository, $id, CommentsRepository $commentsRepository)
     {
         $comment = new Comments();
+
+        $idA = $articlesRepository->find($id);
 
         $date = date("d-m-Y H:i:s");
 
@@ -69,15 +71,18 @@ class Article extends AbstractController
             $comment->setActive(0);
             $comment->setDate($date);
             $comment->setUsersId($users);
+            $comment->setArticlesId($idA);
             $manager->persist($comment);
             $manager->flush();
 
             $this->redirectToRoute('home');
         }
+
         return $this->render("article.html.twig", [
             'title' => "OneArticle",
             "article" => $articles,
-            "form" => $form->createView()
+            "form" => $form->createView(),
+            "comments" => $commentsRepository->findBy(["articles_id" => $id, "active" => 1])
         ]);
     }
 
