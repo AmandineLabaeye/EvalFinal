@@ -4,12 +4,10 @@
 namespace App\Controller;
 
 use App\Entity\Users;
-use App\Form\UsersType;
 use App\Repository\UsersRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
-use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,7 +16,7 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * @Route("/admin")
  */
-class AdminController extends AbstractController
+class AdminControllerUsers extends AbstractController
 {
     /**
      * @Route("/", name="admin")
@@ -96,11 +94,11 @@ class AdminController extends AbstractController
     }
 
     /**
-     * @Route("/users/activate", name="active", methods={"GET"})
+     * @Route("/users/activate", name="users_active", methods={"GET"})
      */
     public function Active(UsersRepository $usersRepository): Response
     {
-        return $this->render('admin/liste.html.twig', [
+        return $this->render('usersactive/liste.html.twig', [
             'users' => $usersRepository->findBy(["active" => 0]),
             "title" => "Users"
         ]);
@@ -119,12 +117,12 @@ class AdminController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('active', [
+            return $this->redirectToRoute('users_active', [
                 'id' => $user->getId(),
             ]);
         }
 
-        return $this->render('admin/edit.html.twig', [
+        return $this->render('useractive/edit.html.twig', [
             'user' => $user,
             'form' => $form->createView(),
         ]);

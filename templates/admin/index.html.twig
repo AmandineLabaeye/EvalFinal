@@ -5,8 +5,10 @@
     <h1>PANEL ADMIN</h1>
 
     <a href="{{ path('users_all') }}"> Voir tout les utilisateurs</a>
-    <a href="{{ path('active') }}"> Voir utilisateur à activé </a>
-    {#<a href=""> Voir tout les commentaires </a>
-    <a href=""> Voir les commentaire à activé </a>#}
+    <a href="{{ path('users_active') }}"> Voir utilisateur à activé </a>
+    <a href="{{ path('articles_all') }}"> Voir tout les articles </a>
+    <a href="{{ path('articles_active') }}"> Voir les articles à activé </a>
+    <a href="{{ path('comments_all') }}"> Voir tout les commentaires</a>
+    <a href="{{ path('comments_active') }}"> Voir tout les commentaires à activé</a>
 
 {% endblock %}

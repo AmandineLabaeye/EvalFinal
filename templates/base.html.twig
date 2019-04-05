@@ -14,15 +14,11 @@
             <span>...</span>
             {% if is_granted('ROLE_USER') %}
                 <a href="{{ path('home') }}"> Home </a>
-                <a href="{{ path('AddArticle') }}"> Add one article</a>
-                <a href="{{ path('myArticles') }}"> My articles </a>
-                <a href="{{ path('myComments') }}"> My Comments</a>
+                <a href="{{ path('articles_new') }}"> Add one article</a>
                 <a href="{{ path('logout') }}">Logout</a>
             {% elseif is_granted('ROLE_ADMIN') %}
                 <a href="{{ path('home') }}"> Home </a>
-                <a href="{{ path('AddArticle') }}"> Add one article</a>
-                <a href="{{ path('myArticles') }}"> My articles </a>
-                <a href="{{ path('myComments') }}"> My Comments</a>
+                <a href="{{ path('articles_new') }}"> Add one article</a>
                 <a href="{{ path('admin') }}"> Panel Admin </a>
                 <a href="{{ path('logout') }}">Logout</a>
             {% else %}

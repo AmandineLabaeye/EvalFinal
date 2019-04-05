@@ -80,14 +80,14 @@ class Article extends AbstractController
 
         return $this->render("article.html.twig", [
             'title' => "OneArticle",
-            "article" => $articles,
+            "articles" => $articles,
             "form" => $form->createView(),
             "comments" => $commentsRepository->findBy(["articles_id" => $id, "active" => 1])
         ]);
     }
 
     /**
-     * @Route("AddArticle", name="AddArticle")
+     * @Route("AddArticle", name="articles_new")
      */
     public function AddArticles(ObjectManager $manager, Request $request)
     {
@@ -120,26 +120,6 @@ class Article extends AbstractController
         return $this->render('addArticle.html.twig', [
             "title" => "addArticle",
             "form" => $form->createView()
-        ]);
-    }
-
-    /**
-     * @Route("/MyArticles", name="myArticles")
-     */
-    public function MyArticles()
-    {
-        return $this->render("myArticles.html.twig", [
-            "title" => "My Articles"
-        ]);
-    }
-
-    /**
-     * @Route("/MyComments", name="myComments")
-     */
-    public function MyComments()
-    {
-        return $this->render("myComments.html.twig", [
-            "title" => "My Comments"
         ]);
     }
 }
