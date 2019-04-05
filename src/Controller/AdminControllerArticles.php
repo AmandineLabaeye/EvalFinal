@@ -21,7 +21,7 @@ class AdminControllerArticles extends AbstractController
 {
 
     /**
-     * @Route("/", name="articles_all")
+     * @Route("/a", name="articles_all")
      */
     public function All(ArticlesRepository $articlesRepository)
     {

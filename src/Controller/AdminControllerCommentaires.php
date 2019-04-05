@@ -19,7 +19,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class AdminControllerCommentaires extends AbstractController
 {
     /**
-     * @Route("/", name="comments_all")
+     * @Route("/c", name="comments_all")
      */
     public function All(CommentsRepository $commentsRepository)
     {

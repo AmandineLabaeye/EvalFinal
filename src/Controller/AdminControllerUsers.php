@@ -14,22 +14,13 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/admin")
+ * @Route("/admin/users")
  */
 class AdminControllerUsers extends AbstractController
 {
-    /**
-     * @Route("/", name="admin")
-     */
-    public function index()
-    {
-        return $this->render("admin/index.html.twig", [
-            "title" => "Index admin"
-        ]);
-    }
 
     /**
-     * @Route("/users", name="users_all", methods={"GET"})
+     * @Route("/u", name="users_all", methods={"GET"})
      */
     public function All(UsersRepository $usersRepository): Response
     {

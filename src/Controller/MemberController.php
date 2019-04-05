@@ -1,24 +1,29 @@
 <?php
 
+
 namespace App\Controller;
+
 
 use App\Entity\Articles;
 use App\Entity\Comments;
 use App\Repository\ArticlesRepository;
 use App\Repository\CommentsRepository;
 use Doctrine\Common\Persistence\ObjectManager;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-class Article extends AbstractController
+/**
+ * @Route("/member")
+ */
+class MemberController extends AbstractController
 {
     /**
-     * @Route("/", name="home")
+     * @Route("/", name="home_member")
      */
     public function Home(ArticlesRepository $articlesRepository)
     {
@@ -28,26 +33,8 @@ class Article extends AbstractController
         ]);
     }
 
-
     /**
-     * @Route("/login", name="login")
-     */
-    public function Login()
-    {
-        return $this->render("login.html.twig", [
-            "title" => "Login"
-        ]);
-    }
-
-    /**
-     * @Route("/logout", name="logout")
-     */
-    public function Logout()
-    {
-    }
-
-    /**
-     * @Route("OneArticle/{id}", name="OneArticle", methods={"GET", "POST"})
+     * @Route("/{id}", name="OneArticle_member", methods={"GET", "POST"})
      */
     public function OneArticle(Articles $articles, Request $request, ObjectManager $manager, ArticlesRepository $articlesRepository, $id, CommentsRepository $commentsRepository)
     {
@@ -80,14 +67,14 @@ class Article extends AbstractController
 
         return $this->render("article.html.twig", [
             'title' => "OneArticle",
-            "articles" => $articles,
+            "article" => $articles,
             "form" => $form->createView(),
             "comments" => $commentsRepository->findBy(["articles_id" => $id, "active" => 1])
         ]);
     }
 
     /**
-     * @Route("AddArticle", name="articles_new")
+     * @Route("/member/AddArticle", name="articles_new_member")
      */
     public function AddArticles(ObjectManager $manager, Request $request)
     {
@@ -122,4 +109,5 @@ class Article extends AbstractController
             "form" => $form->createView()
         ]);
     }
+
 }

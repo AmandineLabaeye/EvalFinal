@@ -1,21 +1,47 @@
 <?php
 
+
 namespace App\Controller;
 
 use App\Entity\Users;
 use App\Form\UsersType;
-use App\Repository\UsersRepository;
+use App\Repository\ArticlesRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
-/**
- * @Route("/users")
- */
-class UsersController extends AbstractController
+class AllController extends AbstractController
 {
+    /**
+     * @Route("/", name="home")
+     */
+    public function Home(ArticlesRepository $articlesRepository)
+    {
+        return $this->render("home.html.twig", [
+            "title" => "Home",
+            "articles" => $articlesRepository->findBy(["active" => 1])
+        ]);
+    }
+
+
+    /**
+     * @Route("/login", name="login")
+     */
+    public function Login()
+    {
+        return $this->render("login.html.twig", [
+            "title" => "Login"
+        ]);
+    }
+
+    /**
+     * @Route("/logout", name="logout")
+     */
+    public function Logout()
+    {
+    }
 
     /**
      * @Route("/new", name="users_new", methods={"GET","POST"})
