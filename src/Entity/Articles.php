@@ -34,7 +34,7 @@ class Articles
     private $description;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\users", inversedBy="articles")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Users", inversedBy="articles")
      * @ORM\JoinColumn(nullable=false)
      */
     private $users_id;
