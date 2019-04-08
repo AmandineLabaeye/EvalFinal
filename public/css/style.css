@@ -27,6 +27,7 @@ header {
     border: 2px solid grey;
     cursor: pointer;
     text-decoration: none;
+    text-align: center;
 }
 
 #hamburger-menu > span {
@@ -61,7 +62,6 @@ h1 {
 
 .Article {
     text-align: center;
-    border: dashed darkred 2px;
     border-radius: 20px;
     padding-bottom: 20px;
     margin-bottom: 20px;
@@ -132,8 +132,8 @@ button {
     text-align: center;
 }
 
-label {
-    color: darkred;
+.Button, Form {
+    text-align: center;
 }
 
 @media (max-width: 1388px) {

@@ -20,7 +20,7 @@ class UsersType extends AbstractType
             ->add('name', TextType::class)
             ->add('surname', TextType::class)
             ->add('age', NumberType::class)
-            ->add('email', EmailType::class)
+            ->add('email', TextType::class)
             ->add('password', PasswordType::class)
             ->add('confirm_password', PasswordType::class)
         ;

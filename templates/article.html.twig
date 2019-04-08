@@ -1,11 +1,7 @@
 {% extends "base.html.twig" %}
-
 {% block body %}
-
     <h1> L'article </h1>
-
     {% if is_granted('ROLE_USER') %}
-
         <div class="Article">
             <h1>Article n°{{ article.id }}</h1>
             <h2 class="TitleA">{{ article.title }}</h2>
@@ -13,34 +9,25 @@
             <p class="DescritpionA">{{ article.description }}</p>
             <span class="DateA">{{ article.date }}</span>
         </div>
-
         {{ form_start(form) }}
-
         {{ form_row(form.content, {
             'label': "Postez un commentaire!",
             'attr': {
                 'placeholder': "Entrez le commentaire que tu souhaites"
             }
         }) }}
-
         {{ form_row(form.Send) }}
-
         {{ form_end(form) }}
-
-        <div id="Commentaire">
-            {% for user in users %}
-                <div>
-                    {% for comment in comments %}
-                        <span>{{ user.username }}</span>
-                        <span>{{ comment.content }}</span>
-                        <span>{{ comment.date }}</span>
-                    {% endfor %}
-                </div>
-            {% endfor %}
-        </div>
-
+        {% for user in users %}
+            <div class="Commentaire">
+                {% for comment in comments %}
+                    <span class="Username">Auteur: {{ user.username }}</span>
+                    <span class="Content">Commentaire: {{ comment.content }}</span>
+                    <span class="Date">{{ comment.date }}</span>
+                {% endfor %}
+            </div>
+        {% endfor %}
     {% elseif is_granted('ROLE_ADMIN') %}
-
         <div class="Article">
             <h1>Article n°{{ article.id }}</h1>
             <h2 class="TitleA">{{ article.title }}</h2>
@@ -48,33 +35,25 @@
             <p class="DescritpionA">{{ article.description }}</p>
             <span class="DateA">{{ article.date }}</span>
         </div>
-
         {{ form_start(form) }}
-
         {{ form_row(form.content, {
             'label': "Postez un commentaire!",
             'attr': {
                 'placeholder': "Entrez le commentaire que tu souhaites"
             }
         }) }}
-
         {{ form_row(form.Send) }}
-
         {{ form_end(form) }}
-
-        <div id="Commentaire">
-            {% for user in users %}
-                <div>
-                    {% for comment in comments %}
-                        <span>{{ user.username }}</span>
-                        <span>{{ comment.content }}</span>
-                        <span>{{ comment.date }}</span>
-                    {% endfor %}
-                </div>
-            {% endfor %}
-        </div>
+        {% for user in users %}
+            <div class="Commentaire">
+                {% for comment in comments %}
+                    <span class="Username">Auteur: {{ user.username }}</span>
+                    <span class="Content">Commentaire: {{ comment.content }}</span>
+                    <span class="Date">{{ comment.date }}</span>
+                {% endfor %}
+            </div>
+        {% endfor %}
     {% else %}
-
         <div class="Article">
             <h1>Article n°{{ article.id }}</h1>
             <h2 class="TitleA">{{ article.title }}</h2>
@@ -82,19 +61,14 @@
             <p class="DescritpionA">{{ article.description }}</p>
             <span class="DateA">{{ article.date }}</span>
         </div>
-
-        <div id="Commentaire">
-            {% for user in users %}
-                <div>
-                    {% for comment in comments %}
-                        <span>{{ user.username }}</span>
-                        <span>{{ comment.content }}</span>
-                        <span>{{ comment.date }}</span>
-                    {% endfor %}
-                </div>
-            {% endfor %}
-        </div>
-
+        {% for user in users %}
+            <div class="Commentaire">
+                {% for comment in comments %}
+                    <span class="Username"> Auteur: {{ user.username }}</span>
+                    <span class="Content">Commentaire: {{ comment.content }}</span>
+                    <span class="Date">{{ comment.date }}</span>
+                {% endfor %}
+            </div>
+        {% endfor %}
     {% endif %}
-
 {% endblock %}
