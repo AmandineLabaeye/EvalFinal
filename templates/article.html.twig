@@ -27,11 +27,17 @@
 
         {{ form_end(form) }}
 
-        {% for comment in comments %}
-
-            <span>{{ comment.content }}</span>
-
-        {% endfor %}
+        <div id="Commentaire">
+            {% for user in users %}
+                <div>
+                    {% for comment in comments %}
+                        <span>{{ user.username }}</span>
+                        <span>{{ comment.content }}</span>
+                        <span>{{ comment.date }}</span>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+        </div>
 
     {% elseif is_granted('ROLE_ADMIN') %}
 
@@ -56,12 +62,17 @@
 
         {{ form_end(form) }}
 
-        {% for comment in comments %}
-
-            <span>{{ comment.content }}</span>
-
-        {% endfor %}
-
+        <div id="Commentaire">
+            {% for user in users %}
+                <div>
+                    {% for comment in comments %}
+                        <span>{{ user.username }}</span>
+                        <span>{{ comment.content }}</span>
+                        <span>{{ comment.date }}</span>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+        </div>
     {% else %}
 
         <div class="Article">
@@ -72,11 +83,17 @@
             <span class="DateA">{{ article.date }}</span>
         </div>
 
-        {% for comment in comments %}
-
-            <span>{{ comment.content }}</span>
-
-        {% endfor %}
+        <div id="Commentaire">
+            {% for user in users %}
+                <div>
+                    {% for comment in comments %}
+                        <span>{{ user.username }}</span>
+                        <span>{{ comment.content }}</span>
+                        <span>{{ comment.date }}</span>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+        </div>
 
     {% endif %}
 

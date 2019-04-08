@@ -8,6 +8,7 @@ use App\Entity\Articles;
 use App\Entity\Comments;
 use App\Repository\ArticlesRepository;
 use App\Repository\CommentsRepository;
+use App\Repository\UsersRepository;
 use Doctrine\Common\Persistence\ObjectManager;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -47,7 +48,7 @@ class AdminController extends AbstractController
     /**
      * @Route("/{id}", name="OneArticle_admin", methods={"GET", "POST"})
      */
-    public function OneArticle(Articles $articles, Request $request, ObjectManager $manager, ArticlesRepository $articlesRepository, $id, CommentsRepository $commentsRepository)
+    public function OneArticle(Articles $articles, Request $request, ObjectManager $manager, ArticlesRepository $articlesRepository, $id, CommentsRepository $commentsRepository, UsersRepository $usersRepository)
     {
         $comment = new Comments();
 
@@ -80,7 +81,8 @@ class AdminController extends AbstractController
             'title' => "OneArticle",
             "article" => $articles,
             "form" => $form->createView(),
-            "comments" => $commentsRepository->findBy(["articles_id" => $id, "active" => 1])
+            "comments" => $commentsRepository->findBy(["articles_id" => $id, "active" => 1]),
+            "users" => $usersRepository->findBy(["id" => $users])
         ]);
     }
 
