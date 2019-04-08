@@ -46,11 +46,11 @@ class AdminControllerArticles extends AbstractController
     public function edit(Articles $articles, Request $request): Response
     {
         $form = $this->createFormBuilder($articles)
-            ->add('title', TextType::class)
-            ->add('photo', TextType::class)
-            ->add('description', TextareaType::class)
-            ->add('date', TextType::class)
-            ->add('active', NumberType::class)
+            ->add('title', TextType::class, ["label" => false])
+            ->add('photo', TextType::class, ["label" => false])
+            ->add('description', TextareaType::class, ["label" => false])
+            ->add('date', TextType::class, ["label" => false])
+            ->add('active', NumberType::class, ["label" => false])
             ->getForm();
         $form->handleRequest($request);
 
@@ -98,7 +98,7 @@ class AdminControllerArticles extends AbstractController
     public function EditActive(Request $request, Articles $articles): Response
     {
         $form = $this->createFormBuilder($articles)
-            ->add('active', NumberType::class)
+            ->add('active', NumberType::class, ["label" => false])
             ->getForm();
         $form->handleRequest($request);
 

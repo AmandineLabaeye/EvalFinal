@@ -19,8 +19,8 @@
             {% elseif is_granted('ROLE_ADMIN') %}
                 <a href="{{ path('home_admin') }}"> Home </a>
                 <a href="{{ path('articles_new_admin') }}"> Add one article</a>
-                <a href="{{ path('admin') }}"> Panel Admin </a>
                 <a href="{{ path('logout') }}">Logout</a>
+                <a href="{{ path('admin') }}" id="Panel"> Panel Admin </a>
             {% else %}
                 <a href="{{ path('home') }}"> Home </a>
                 <a href="{{ path('users_new') }}"> Registration </a>

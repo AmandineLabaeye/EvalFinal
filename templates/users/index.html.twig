@@ -7,30 +7,26 @@
 
     <table class="table">
         <thead>
-            <tr>
-                <th>Id</th>
-                <th>Username</th>
-                <th>Name</th>
-                <th>Surname</th>
-                <th>Age</th>
-                <th>Users_level</th>
-                <th>Email</th>
-                <th>Password</th>
-                <th>Active</th>
-                <th>actions</th>
-            </tr>
+        <tr>
+            <th>Username</th>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Age</th>
+            <th>Users_level</th>
+            <th>Email</th>
+            <th>Active</th>
+            <th>actions</th>
+        </tr>
         </thead>
         <tbody>
         {% for user in users %}
             <tr>
-                <td>{{ user.id }}</td>
                 <td>{{ user.username }}</td>
                 <td>{{ user.name }}</td>
                 <td>{{ user.surname }}</td>
                 <td>{{ user.age }}</td>
                 <td>{{ user.usersLevel }}</td>
                 <td>{{ user.email }}</td>
-                <td>{{ user.password }}</td>
                 <td>{{ user.active ? 'Yes' : 'No' }}</td>
                 <td>
                     <a href="{{ path('users_show', {'id': user.id}) }}">show</a>
@@ -45,5 +41,11 @@
         </tbody>
     </table>
 
-    <a href="{{ path('users_new') }}">Create new</a>
+    <table>
+        <tr>
+            <th>
+                <a href="{{ path('users_new') }}">Create new</a>
+            </th>
+        </tr>
+    </table>
 {% endblock %}

@@ -46,13 +46,13 @@ class AdminControllerUsers extends AbstractController
     public function edit(Request $request, Users $user): Response
     {
         $form = $this->createFormBuilder($user)
-            ->add('username', TextType::class)
-            ->add('name', TextType::class)
-            ->add('surname', TextType::class)
-            ->add('age', NumberType::class)
-            ->add('email', EmailType::class)
-            ->add('users_level', TextType::class)
-            ->add('active', NumberType::class)
+            ->add('username', TextType::class, ['label' => false])
+            ->add('name', TextType::class, ['label' => false])
+            ->add('surname', TextType::class, ['label' => false])
+            ->add('age', NumberType::class, ['label' => false])
+            ->add('email', TextType::class, ['label' => false])
+            ->add('users_level', TextType::class, ['label' => false])
+            ->add('active', NumberType::class, ['label' => false])
             ->getForm();
         $form->handleRequest($request);
 
@@ -101,7 +101,7 @@ class AdminControllerUsers extends AbstractController
     public function EditActive(Request $request, Users $user): Response
     {
         $form = $this->createFormBuilder($user)
-            ->add('active', NumberType::class)
+            ->add('active', NumberType::class, ['label' => false])
             ->getForm();
         $form->handleRequest($request);
 

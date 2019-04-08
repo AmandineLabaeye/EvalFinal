@@ -44,9 +44,9 @@ class AdminControllerCommentaires extends AbstractController
     public function edit(Comments $comments, Request $request): Response
     {
         $form = $this->createFormBuilder($comments)
-            ->add("content", TextType::class)
-            ->add('date', TextType::class)
-            ->add("active", TextType::class)
+            ->add("content", TextType::class, ["label" => false])
+            ->add('date', TextType::class, ["label" => false])
+            ->add("active", TextType::class, ["label" => false])
             ->getForm();
         $form->handleRequest($request);
 
@@ -94,7 +94,7 @@ class AdminControllerCommentaires extends AbstractController
     public function EditActive(Request $request, Comments $comments): Response
     {
         $form = $this->createFormBuilder($comments)
-            ->add('active', NumberType::class)
+            ->add('active', NumberType::class, ["label" => false])
             ->getForm();
         $form->handleRequest($request);
 

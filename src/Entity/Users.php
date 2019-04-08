@@ -273,4 +273,9 @@ class Users implements UserInterface
     public function getSalt()
     {
     }
+
+    public function __toString()
+    {
+        return $this->getUsername();
+    }
 }

@@ -18,7 +18,13 @@
 
         {{ include('users/_form.html.twig') }}
 
-        <a href="{{ path('users_all') }}">back to list</a>
+        <table>
+            <tr>
+                <td>
+                    <a href="{{ path('users_all') }}">back to list</a>
+                </td>
+            </tr>
+        </table>
 
     {% else %}
 

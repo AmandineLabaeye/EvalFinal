@@ -6,6 +6,7 @@ namespace App\Controller;
 
 use App\Entity\Articles;
 use App\Entity\Comments;
+use App\Entity\Users;
 use App\Repository\ArticlesRepository;
 use App\Repository\CommentsRepository;
 use App\Repository\UsersRepository;
@@ -43,6 +44,8 @@ class MemberController extends AbstractController
 
         $idA = $articlesRepository->find($id);
 
+        $uusers = new Users();
+
         $date = date("d-m-Y H:i:s");
 
         $users = $this->getUser();
@@ -71,7 +74,6 @@ class MemberController extends AbstractController
             "article" => $articles,
             "form" => $form->createView(),
             "comments" => $commentsRepository->findBy(["articles_id" => $id, "active" => 1]),
-            "users" => $usersRepository->findBy(["id" => $users])
         ]);
     }
 

@@ -1,14 +1,26 @@
 {% extends "base.html.twig" %}
-
 {% block body %}
-
     <h1>PANEL ADMIN</h1>
-
-    <a href="{{ path('users_all') }}"> Voir tout les utilisateurs</a>
-    <a href="{{ path('users_active') }}"> Voir utilisateur à activé </a>
-    <a href="{{ path('articles_all') }}"> Voir tout les articles </a>
-    <a href="{{ path('articles_active') }}"> Voir les articles à activé </a>
-    <a href="{{ path('comments_all') }}"> Voir tout les commentaires</a>
-    <a href="{{ path('comments_active') }}"> Voir tout les commentaires à activé</a>
-
+    <table>
+        <tr>
+            <th>
+                <a href="{{ path('users_all') }}"> Voir tout les utilisateurs</a>
+            </th>
+            <td>
+                <a href="{{ path('users_active') }}"> Voir utilisateur à activé </a>
+            </td>
+            <th>
+                <a href="{{ path('articles_all') }}"> Voir tout les articles </a>
+            </th>
+            <td>
+                <a href="{{ path('articles_active') }}"> Voir les articles à activé </a>
+            </td>
+            <th>
+                <a href="{{ path('comments_all') }}"> Voir tout les commentaires</a>
+            </th>
+            <td>
+                <a href="{{ path('comments_active') }}"> Voir tout les commentaires à activé</a>
+            </td>
+        </tr>
+    </table>
 {% endblock %}

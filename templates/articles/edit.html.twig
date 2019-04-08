@@ -6,8 +6,13 @@
     <h1>Edit Articles</h1>
 
     {{ include('articles/_form.html.twig', {'button_label': 'Update'}) }}
-
-    <a href="{{ path('articles_all') }}">back to list</a>
-
+    <br>
     {{ include('articles/_delete_form.html.twig') }}
+    <table>
+        <tr>
+            <td>
+                <a href="{{ path('articles_all') }}">back to list</a>
+            </td>
+        </tr>
+    </table>
 {% endblock %}

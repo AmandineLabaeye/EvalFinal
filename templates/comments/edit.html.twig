@@ -6,8 +6,13 @@
     <h1>Edit Commentaire</h1>
 
     {{ include('comments/_form.html.twig', {'button_label': 'Update'}) }}
-
-    <a href="{{ path('comments_all') }}">back to list</a>
-
+    <br>
     {{ include('comments/_delete_form.html.twig') }}
+    <table>
+        <tr>
+            <td>
+                <a href="{{ path('comments_all') }}">back to list</a>
+            </td>
+        </tr>
+    </table>
 {% endblock %}
