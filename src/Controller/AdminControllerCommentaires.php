@@ -65,13 +65,13 @@ class AdminControllerCommentaires extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="comments_delete", methods={"DELETE"})
+     * @Route("/delete/{id}", name="comments_delete", methods={"DELETE"})
      */
-    public function delete(Request $request, Comments $comments): Response
+    public function delete(Request $request, Comments $comment): Response
     {
-        if ($this->isCsrfTokenValid('delete' . $comments->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $comment->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->remove($comments);
+            $entityManager->remove($comment);
             $entityManager->flush();
         }
 
